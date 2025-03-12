@@ -3,7 +3,7 @@
 <package format="3">
   <name>rover_one</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>rover_one</description>
   <maintainer email="symoensjd@gmail.com">Joel</maintainer>
   <license>TODO: License declaration</license>
 
@@ -12,8 +12,8 @@
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
-  <exec_depend>demo_node_cpp</exec_depend>
-  <exec_depend>demo_node_py</exec_depend>
+  <exec_depend>demo_nodes_cpp</exec_depend>
+  <exec_depend>demo_nodes_py</exec_depend>
 
 
   <export>
