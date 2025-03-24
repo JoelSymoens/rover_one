@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <material name="white">
+        <color rgba="1 1 1 1" />
+    </material>
+
+    <material name="orange">
+        <color rgba="1 0.3 0.1 1" />
+    </material>
+
+    <material name="blue">
+        <color rgba="0.2 0.2 1 1" />
+    </material>
+
+    <material name="black">
+        <color rgba="0 0 0 1" />
+    </material>
+
+    <link name="base_link">
+
+    </link>
+
+    <joint name="chassis_joint" type="fixed">
+        <parent link="base_link" />
+        <child link="chassis_link"/>
+        <origin rpy="0 0 0" xyz="0 1 .15"/>   
+    </joint>
+
+    <link name="chassis_link">
+        <visual>
+            <origin rpy="1.5708 0 0" xyz="0 0 .01" />
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Assy_Base.dae" scale="1 1 1"/>
+            </geometry>                   
+        </visual>
+    </link>
+
+    <joint name="wheel_arm_RF_joint" type="fixed" >
+        <parent link="chassis_link"/>
+        <child link="wheel_arm_RF_link" />
+        <origin rpy="0 0 0" xyz="-.2 -.15 .0375" />
+    </joint>
+
+    <link name="wheel_arm_RF_link" >
+        <visual>
+        <origin rpy="1.5708 0 1.5708" xyz="0 0 0"/>+
+        <geometry>
+            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
+        </geometry>
+        </visual>
+    </link>
+
+    <joint name="wheel_arm_LF_joint" type="fixed" >
+        <parent link="chassis_link"/>
+        <child link="wheel_arm_LF_link" />
+        <origin rpy="1.5708 0 -1.5708" xyz=".2 -.15 .0375" />
+    </joint>
+
+    <link name="wheel_arm_LF_link" >
+        <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>+
+        <geometry>
+            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
+        </geometry>
+        </visual>
+    </link>
+    <!--Red x, blue y, green z -->
+    <joint name="wheel_arm_RR_joint" type="fixed" >
+        <parent link="chassis_link"/>
+        <child link="wheel_arm_RR_link" />
+        <origin rpy="1.5708 0 1.5708" xyz="-.2 .15 .0375" />
+    </joint>
+
+    <link name="wheel_arm_RR_link" >
+        <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>+
+        <geometry>
+            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
+        </geometry>
+        </visual>
+    </link>
+
+    <joint name="wheel_arm_LR_joint" type="fixed" >
+        <parent link="chassis_link"/>
+        <child link="wheel_arm_LR_link" />
+        <origin rpy="1.5708 0 -1.5708" xyz=".2 .15 .0375" />
+    </joint>
+
+    <link name="wheel_arm_LR_link" >
+        <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
+        </geometry>
+        </visual>
+    </link>
+
+    <joint name="wheel_RF_joint" type="fixed">
+        <parent link="wheel_arm_RF_link"/>
+        <child link="wheel_RF_link" type="fixed"/>
+        <origin rpy="0 0 0" xyz="-.038 0 -.125" />
+    </joint>
+
+    <link name="wheel_RF_link">
+        <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
+        </geometry>
+        </visual>
+    </link>
+
+    <joint name="wheel_LF_joint" type="fixed">
+        <parent link="wheel_arm_LF_link"/>
+        <child link="wheel_LF_link" type="fixed"/>
+        <origin rpy="0 0 0" xyz="-.038 0 0" />
+    </joint>
+
+    <link name="wheel_LF_link">
+        <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
+        </geometry>
+        </visual>
+    </link>
+
+</robot>
