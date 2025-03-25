@@ -1,22 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
-    <material name="white">
-        <color rgba="1 1 1 1" />
-    </material>
-
-    <material name="orange">
-        <color rgba="1 0.3 0.1 1" />
-    </material>
-
-    <material name="blue">
-        <color rgba="0.2 0.2 1 1" />
-    </material>
-
-    <material name="black">
-        <color rgba="0 0 0 1" />
-    </material>
-
     <link name="base_link">
 
     </link>
@@ -29,133 +13,198 @@
 
     <link name="chassis_link">
         <visual>
-            <origin rpy="1.5708 0 0" xyz="0 0 .01" />
+            <origin rpy="${pi/2} 0 0" xyz="0 0 .01" />
             <geometry>
                 <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Assy_Base.dae" scale="1 1 1"/>
             </geometry>                   
         </visual>
+        <collision>
+            <origin rpy="${pi/2} 0 0" xyz="0 0 .01" />
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Assy_Base.dae" scale="1 1 1"/>
+            </geometry>                   
+        </collision>
     </link>
 
-    <joint name="wheel_arm_RF_joint" type="fixed" >
+    <joint name="wheel_arm_RF_joint" type="revolute" >
         <parent link="chassis_link"/>
         <child link="wheel_arm_RF_link" />
         <origin rpy="0 0 0" xyz="-.2 -.15 .0375" />
+        <axis xyz="0 0 1"/>
+        <limit lower="0.7854" upper="-0.7854" effort="10.0" velocity="2.0"/>
     </joint>
 
     <link name="wheel_arm_RF_link" >
         <visual>
-        <origin rpy="1.5708 0 1.5708" xyz="0 0 0"/>+
-        <geometry>
-            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
-        </geometry>
+            <origin rpy="${pi/2} 0 ${pi/2}" xyz="0 0 0"/>+
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
+            </geometry>
         </visual>
+        <collision>
+            <origin rpy="${pi/2} 0 ${pi/2}" xyz="0 0 0"/>+
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
     </link>
-    <!-- Need to fix xyz to match other joints-->
-    <joint name="wheel_arm_LF_joint" type="fixed" >
+   
+    <joint name="wheel_arm_LF_joint" type="revolute" >
         <parent link="chassis_link"/>
         <child link="wheel_arm_LF_link" />
-        <origin rpy="1.5708 0 -1.5708" xyz=".2 -.15 .0375" />
+        <origin rpy="0 0 0" xyz=".2 -.15 .0375" />
+        <axis xyz="0 0 1"/>
+        <limit lower="0.7854" upper="-0.7854" effort="10.0" velocity="2.0"/>
     </joint>
 
     <link name="wheel_arm_LF_link" >
         <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>+
-        <geometry>
-            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
-        </geometry>
+            <origin rpy="${pi/2} 0 -${pi/2}" xyz="0 0 0"/>+
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
+            </geometry>
         </visual>
+        <collision>
+            <origin rpy="${pi/2} 0 -${pi/2}" xyz="0 0 0"/>+
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
     </link>
-    <!--Red x, blue y, green z -->
-    <joint name="wheel_arm_RR_joint" type="fixed" >
+    <!--Red x, green y, blue z -->
+    <joint name="wheel_arm_RR_joint" type="revolute" >
         <parent link="chassis_link"/>
         <child link="wheel_arm_RR_link" />
-        <origin rpy="1.5708 0 1.5708" xyz="-.2 .15 .0375" />
+        <origin rpy="0 0 0" xyz="-.2 .15 .0375" />
+        <axis xyz="0 0 1"/>
+        <limit lower="0.7854" upper="-0.7854" effort="10.0" velocity="2.0"/>
     </joint>
 
     <link name="wheel_arm_RR_link" >
         <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>+
-        <geometry>
-            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
-        </geometry>
+            <origin rpy="${pi/2} 0 ${pi/2}" xyz="0 0 0"/>+
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
+            </geometry>
         </visual>
+        <collision>
+            <origin rpy="${pi/2} 0 ${pi/2}" xyz="0 0 0"/>+
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
     </link>
 
-    <joint name="wheel_arm_LR_joint" type="fixed" >
+    <joint name="wheel_arm_LR_joint" type="revolute" >
         <parent link="chassis_link"/>
         <child link="wheel_arm_LR_link" />
-        <origin rpy="1.5708 0 -1.5708" xyz=".2 .15 .0375" />
+        <origin rpy="0 0 0" xyz=".2 .15 .0375" />
+        <axis xyz="0 0 1"/>
+        <limit lower="0.7854" upper="-0.7854" effort="10.0" velocity="2.0"/>
     </joint>
 
     <link name="wheel_arm_LR_link" >
         <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <geometry>
-            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
-        </geometry>
+            <origin rpy="${pi/2} 0 -${pi/2}" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
+            </geometry>
         </visual>
+        <collision>
+            <origin rpy="${pi/2} 0 -${pi/2}" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel_Arm.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
     </link>
 
-    <joint name="wheel_RF_joint" type="fixed">
+    <!-- Wheels -->
+    <joint name="wheel_RF_joint" type="continuous">
         <parent link="wheel_arm_RF_link"/>
-        <child link="wheel_RF_link" type="fixed"/>
+        <child link="wheel_RF_link" />
         <origin rpy="0 0 0" xyz="-.038 0 -.125" />
+        <axis xyz="1 0 0"/>
     </joint>
 
     <link name="wheel_RF_link">
         <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <geometry>
-            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
-        </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
+            </geometry>
         </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
     </link>
 
-    <joint name="wheel_LF_joint" type="fixed">
+    <joint name="wheel_LF_joint" type="continuous">
         <parent link="wheel_arm_LF_link"/>
-        <child link="wheel_LF_link" type="fixed"/>
-        <origin rpy="0 0 0" xyz="0 -.125 0" />
+        <child link="wheel_LF_link" />
+        <origin rpy="0 0 0" xyz=".038 0 -.125" />
+        <axis xyz="1 0 0"/>
     </joint>
 
     <link name="wheel_LF_link">
         <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <geometry>
-            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
-        </geometry>
+            <origin rpy="0 0 ${pi}" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
+            </geometry>
         </visual>
+        <collision>
+            <origin rpy="0 0 ${pi}" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
     </link>
 
-    <joint name="wheel_RR_joint" type="fixed">
+    <joint name="wheel_RR_joint" type="continuous">
         <parent link="wheel_arm_RR_link"/>
-        <child link="wheel_RR_link" type="fixed"/>
-        <origin rpy="0 -1.5708 0" xyz="0 -.125 -.038" />
+        <child link="wheel_RR_link"/>
+        <origin rpy="0 0 0" xyz="-.038 0 -.125" />
+        <axis xyz="1 0 0"/>
     </joint>
 
     <link name="wheel_RR_link">
         <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <geometry>
-            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
-        </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
+            </geometry>
         </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
     </link>
 
-    <joint name="wheel_LR_joint" type="fixed">
+    <joint name="wheel_LR_joint" type="continuous">
         <parent link="wheel_arm_LR_link"/>
-        <child link="wheel_LR_link" type="fixed"/>
-        <origin rpy="0 0 0" xyz="0 -.125 0" />
+        <child link="wheel_LR_link" />
+        <origin rpy="0 0 0" xyz=".038 0 -.125" />
+        <axis xyz="1 0 0"/>
     </joint>
 
     <link name="wheel_LR_link">
         <visual>
-        <origin rpy="0 0 0" xyz="0 0 0"/>
-        <geometry>
-            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
-        </geometry>
+            <origin rpy="0 0 ${pi}" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
+            </geometry>
         </visual>
+        <collision>
+        <origin rpy="0 0 ${pi}" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
+            </geometry>
+        </collision>
     </link>
-
-
 
 </robot>
