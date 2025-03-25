@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
+    <xacro:include filename="inertial_macros.xacro"/>
+    <!-- add this to links-->
+
     <link name="base_link">
 
     </link>
@@ -24,6 +27,9 @@
                 <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Assy_Base.dae" scale="1 1 1"/>
             </geometry>                   
         </collision>
+        <xacro:inertial_box mass="0.5" x="0.3" y="0.3" z="0.15">
+            <origin xyz="0 0 .01" rpy="0 0 0"/>
+        </xacro:inertial_box>
     </link>
 
     <joint name="wheel_arm_RF_joint" type="revolute" >
