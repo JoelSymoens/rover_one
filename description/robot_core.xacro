@@ -50,7 +50,7 @@
         </geometry>
         </visual>
     </link>
-
+    <!-- Need to fix xyz to match other joints-->
     <joint name="wheel_arm_LF_joint" type="fixed" >
         <parent link="chassis_link"/>
         <child link="wheel_arm_LF_link" />
@@ -114,7 +114,7 @@
     <joint name="wheel_LF_joint" type="fixed">
         <parent link="wheel_arm_LF_link"/>
         <child link="wheel_LF_link" type="fixed"/>
-        <origin rpy="0 0 0" xyz="-.038 0 0" />
+        <origin rpy="0 0 0" xyz="0 -.125 0" />
     </joint>
 
     <link name="wheel_LF_link">
@@ -125,5 +125,37 @@
         </geometry>
         </visual>
     </link>
+
+    <joint name="wheel_RR_joint" type="fixed">
+        <parent link="wheel_arm_RR_link"/>
+        <child link="wheel_RR_link" type="fixed"/>
+        <origin rpy="0 -1.5708 0" xyz="0 -.125 -.038" />
+    </joint>
+
+    <link name="wheel_RR_link">
+        <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
+        </geometry>
+        </visual>
+    </link>
+
+    <joint name="wheel_LR_joint" type="fixed">
+        <parent link="wheel_arm_LR_link"/>
+        <child link="wheel_LR_link" type="fixed"/>
+        <origin rpy="0 0 0" xyz="0 -.125 0" />
+    </joint>
+
+    <link name="wheel_LR_link">
+        <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <mesh filename="file:///home/joel/dev_ws/src/rover_one/description/G_Wheel.dae" scale="1 1 1"/>
+        </geometry>
+        </visual>
+    </link>
+
+
 
 </robot>
